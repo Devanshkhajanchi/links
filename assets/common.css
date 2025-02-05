@@ -7,8 +7,10 @@
 
 /* COLOR */
 
-	--primary-color: red;
+	--primary-color: white;
 	--secondary-color: blue;
+	background-color: #121212;
+	font-family: baskerville;
 
 }
 
@@ -34,5 +36,21 @@ ul {
 
 h1 {
 	font-size: 8rem;
+	color: var(--primary-color);
 	text-align: center;
+	line-height: 2rem;
+	padding-block: 4rem;
+	filter: blur(0.3rem);
+}
+
+p {
+	color: var(--primary-color);
+}
+
+.heading_styling {
+	font-size: 2rem;
+}
+
+.introduction p {
+	max-width: 35ch;
 }
