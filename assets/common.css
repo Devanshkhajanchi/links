@@ -43,6 +43,10 @@ h1 {
 	filter: blur(0.3rem);
 }
 
+h2 {
+	color: var(--primary-color);
+}
+
 p {
 	color: var(--primary-color);
 }
@@ -53,4 +57,8 @@ p {
 
 .introduction p {
 	max-width: 35ch;
+}
+
+.words {
+	padding: 2rem;
 }
