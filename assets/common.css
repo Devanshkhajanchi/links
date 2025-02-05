@@ -1,0 +1,38 @@
+:root {
+
+/* TYPE */
+
+	font-family: "bricolage grotesque";
+	--secondary-typeface: 'gladiator';
+
+/* COLOR */
+
+	--primary-color: red;
+	--secondary-color: blue;
+
+}
+
+/* STYLING */
+
+header {
+
+}
+
+nav {
+	display: flex;
+	flex-direction: row;
+}
+
+ul {
+
+}
+
+.navigation_links {
+	display: flex;
+	flex-direction: row;
+}
+
+h1 {
+	font-size: 8rem;
+	text-align: center;
+}
