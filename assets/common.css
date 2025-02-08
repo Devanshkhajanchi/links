@@ -1,9 +1,13 @@
+@font-face {
+	font-family: 'Gambarino';
+	src: url('gambarino.otf') format('opentype');
+}
+
 :root {
 
 /* TYPE */
 
-	font-family: "bricolage grotesque";
-	--secondary-typeface: 'gladiator';
+	--primary-font: Gambarino;
 
 /* COLOR */
 
@@ -11,31 +15,37 @@
 	--secondary-color: blue;
 	background-color: #121212;
 	font-family: baskerville;
-
 }
+
 
 /* STYLING */
 
-header {
 
-}
 
-nav {
+nav li {
+	font-family: var(--primary-font);
 	display: flex;
-	flex-direction: row;
+	justify-content: space-between;
+	color: white;
 }
 
-ul {
-
+nav li :nth-child(1) {
+	justify-content: left;
 }
 
-.navigation_links {
-	display: flex;
-	flex-direction: row;
+nav li :nth-child(2) {
+	justify-content: center;
 }
+
+nav li :nth-child(3) {
+	justify-content: right;
+}
+
+  
 
 h1 {
 	font-size: 8rem;
+	font-family: var(--primary-font);
 	color: var(--primary-color);
 	text-align: center;
 	line-height: 2rem;
@@ -46,6 +56,13 @@ h1 {
 h2 {
 	font-size: 2rem;
 	color: var(--primary-color);
+}
+
+blockquote {
+	color: white;
+	font-family: var(--primary-font);
+	display: flex;
+	justify-content: space-around;
 }
 
 p {
@@ -63,3 +80,23 @@ p {
 .words {
 	padding: 2rem;
 }
+
+/* TABLET */
+@media (min-width: 800px) {
+
+}
+
+/* 1080p */
+/* @media (min-width: 1080px) {
+
+} */
+
+/* 2K */
+/* @media (min-width: 1440px) {
+
+} */
+
+/* 4K */
+/* @media (min-width: 2160px) {
+
+} */
