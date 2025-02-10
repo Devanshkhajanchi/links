@@ -39,7 +39,7 @@ let renderBlock = (block) => {
 				<picture>
 					<source srcset="${ block.image.thumb.url }">
 					<source srcset="${ block.image.large.url }">
-					<img src="${ block.image.original.url }">
+					<img src="${ block.	image.original.url }">
 				</picture>
 				<h3>${ block.title }</h3>
 				${ block.description_html }
@@ -48,18 +48,38 @@ let renderBlock = (block) => {
 			`
 		channelBlocks.insertAdjacentHTML('beforeend', linkItem)
 
-		console.log('link')
+		console.log('block', block)
 	}
 
 	// Images!
 	else if (block.class == 'Image') {
-		// …up to you!
+
+		let imageItem = 
+		`
+		<li>
+			<picture> 
+				<img src="${ block.image.original.url }">
+			</picture>
+		<li>
+		`
+		channelBlocks.insertAdjacentHTML('beforeend', imageItem)
 		console.log('image')
 	}
 
 	// Text!
 	else if (block.class == 'Text') {
 		// …up to you!
+
+		let textItem =
+		`
+		<li>
+			<p>
+				${ block. content}
+			</p>
+		</li>
+		`
+		channelBlocks.insertAdjacentHTML('beforeend', textItem)
+
 		console.log('text')
 	}
 
@@ -112,7 +132,7 @@ let renderBlock = (block) => {
 			let linkedVideoItem =
 				`
 				<li>
-					<p><em>Linked Video</em></p>
+					<p><em>${block.title}</em></p>
 					${ block.embed.html }
 				</li>
 				`
@@ -122,7 +142,14 @@ let renderBlock = (block) => {
 
 		// Linked audio!
 		else if (embed.includes('rich')) {
-			// …up to you!
+		let linkedAudioItem = `
+			<li>
+			<p><em>${block.title}</em></p>
+			${ block.embed.html }
+			</li>
+			`
+		channelBlocks.insertAdjacentHTML('beforeend', linkedAudioItem)
+
 		}
 	}
 }

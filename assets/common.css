@@ -27,6 +27,7 @@ nav li {
 	display: flex;
 	justify-content: space-between;
 	color: white;
+	margin-block: 2rem;
 }
 
 nav li :nth-child(1) {
@@ -44,7 +45,7 @@ nav li :nth-child(3) {
   
 
 h1 {
-	font-size: 8rem;
+	font-size: 18rem;
 	font-family: var(--primary-font);
 	color: var(--primary-color);
 	text-align: center;
@@ -63,6 +64,7 @@ blockquote {
 	font-family: var(--primary-font);
 	display: flex;
 	justify-content: space-around;
+	text-align: center;
 }
 
 p {
