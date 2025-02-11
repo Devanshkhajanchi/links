@@ -1,11 +1,9 @@
-// This allows us to process/render the descriptions, which are in Markdown!
-// More about Markdown: https://en.wikipedia.org/wiki/Markdown
 let markdownIt = document.createElement('script')
 markdownIt.src = 'https://cdn.jsdelivr.net/npm/markdown-it@14.0.0/dist/markdown-it.min.js'
 document.head.appendChild(markdownIt)
 
-// Okay, Are.na stuff!
-let channelSlug = 'lost-in-translation-nrt9qfynwhg' // The “slug” is just the end of the URL
+// CHANNEL SLUG
+let channelSlug = 'lost-in-translation-nrt9qfynwhg'
 
 
 // First, let’s lay out some *functions*, starting with our basic metadata:
@@ -30,7 +28,8 @@ let renderBlock = (block) => {
 	// To start, a shared `ul` where we’ll insert all our blocks
 	let channelBlocks = document.getElementById('channel-blocks')
 
-	// Links!
+
+	// LINKS
 	if (block.class == 'Link') {
 		let linkItem =
 			`
@@ -51,7 +50,8 @@ let renderBlock = (block) => {
 		console.log('block', block)
 	}
 
-	// Images!
+
+	// IMAGES
 	else if (block.class == 'Image') {
 
 		let imageItem = 
@@ -66,7 +66,8 @@ let renderBlock = (block) => {
 		console.log('image')
 	}
 
-	// Text!
+
+	// TEXT
 	else if (block.class == 'Text') {
 		// …up to you!
 
@@ -83,11 +84,13 @@ let renderBlock = (block) => {
 		console.log('text')
 	}
 
-	// Uploaded (not linked) media…
+
+	// ALL UPLOADED MEDIA
 	else if (block.class == 'Attachment') {
 		let attachment = block.attachment.content_type // Save us some repetition
 
-		// Uploaded videos!
+
+		// UPLOADED VIDEOS
 		if (attachment.includes('video')) {
 			// …still up to you, but we’ll give you the `video` element:
 			let videoItem =
@@ -102,12 +105,23 @@ let renderBlock = (block) => {
 			// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
 		}
 
-		// Uploaded PDFs!
+
+		// UPLOADED PDFS
 		else if (attachment.includes('pdf')) {
-			// …up to you!
+			
+		let pdfItem =
+		`
+		<li>
+		<img src = ${block.image.original.url}>
+		<a href="${block.attachment.url}"> link to pdf </a>	
+		</li>
+		`
+		channelBlocks.insertAdjacentHTML('beforeend', pdfItem)
+
 		}
 
-		// Uploaded audio!
+
+		// UPLOADED AUDIO
 		else if (attachment.includes('audio')) {
 			// …still up to you, but here’s an `audio` element:
 			let audioItem =
@@ -122,11 +136,12 @@ let renderBlock = (block) => {
 		}
 	}
 
-	// Linked media…
+
+	// ALL LINKED MEDIA
 	else if (block.class == 'Media') {
 		let embed = block.embed.type
 
-		// Linked video!
+		// LINKED VIDEO
 		if (embed.includes('video')) {
 			// …still up to you, but here’s an example `iframe` element:
 			let linkedVideoItem =
@@ -140,7 +155,7 @@ let renderBlock = (block) => {
 			// More on iframe: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
 		}
 
-		// Linked audio!
+		// LINKED AUDIO
 		else if (embed.includes('rich')) {
 		let linkedAudioItem = `
 			<li>
