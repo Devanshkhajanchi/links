@@ -14,7 +14,6 @@ let placeChannelInfo = (data) => {
 	let channelCount = document.getElementById('channel-count')
 	let channelLink = document.getElementById('channel-link')
 
-	// Then set their content/attributes to our data:
 	// channelTitle.innerHTML = data.title
 	// channelDescription.innerHTML = window.markdownit().render(data.metadata.description) // Converts Markdown → HTML
 	// channelCount.innerHTML = data.length

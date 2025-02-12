@@ -42,7 +42,16 @@ nav li :nth-child(3) {
 	justify-content: right;
 }
 
-  
+.block-container {
+	width: 100vw;
+	object-fit: ;
+	filter: saturate(0);
+}
+
+.block-container:hover {
+	filter: none;
+	cursor: pointer;
+}
 
 h1 {
 	font-size: 18rem;
