@@ -20,7 +20,10 @@
 
 /* STYLING */
 
-
+body {
+	height: 100vh;
+	cursor: url('../assets/cursor.png'), auto;
+}
 
 nav li {
 	font-family: var(--primary-font);
@@ -42,10 +45,14 @@ nav li :nth-child(3) {
 	justify-content: right;
 }
 
+.introduction {
+	height: 100vh;
+	align-content: center;
+}
+
 
 .block-container {
 	width: 100vw;
-	object-fit: ;
 	filter: saturate(0);
 }
 
