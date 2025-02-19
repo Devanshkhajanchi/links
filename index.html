@@ -38,10 +38,23 @@
 
 		<main>
 			<div id="project-title">
-				<h1 id="blur-text">
-					LOST <br><span class="heading_styling"> IN TRANSLATION</span>
-				</h1>
+				<!-- Blurred Background Text -->
+				<h1 id="blur-text" class="blurred">LOST <br><span class="heading_styling">IN TRANSLATION</span></h1>
+				
+				<!-- Sharp Text with Mask -->
+				<h1 id="sharp-text" class="sharp">LOST <br><span class="heading_styling">IN TRANSLATION</span></h1>
+				
+				<svg class="mask-svg">
+					<defs>
+						<mask id="mask">
+							<!-- Black Hides, White Reveals -->
+							<rect width="100%" height="100%" fill="black"></rect>
+							<circle id="mask-circle" cx="-50%" cy="-50%" r="100" fill="white"></circle>
+						</mask>
+					</defs>
+				</svg>
 			</div>
+			
 
 			<section class="introduction">
 				<blockquote>
