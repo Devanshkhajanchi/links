@@ -26,6 +26,7 @@ let placeChannelInfo = (data) => {
 	let channelLink = document.getElementById('channel-link')
 	let blockName = document.getElementById('title')
 	let ownerName = document.getElementById('channel-owner')
+	
 
 	// channelTitle.innerHTML = data.title
 	// channelDescription.innerHTML = window.markdownit().render(data.metadata.description) // Converts Markdown → HTML
@@ -38,6 +39,10 @@ let placeChannelInfo = (data) => {
 
 // Then our big function for specific-block-type rendering:
 let renderBlock = (block) => {
+	let modalTitle = document.getElementById("modal-title")
+	let modalAlt = document.getElementById("modalAlt")
+	let modalDesc = document.getElementById("modal-desc")
+
 	// To start, a shared `ul` where we’ll insert all our blocks
 	let channelBlocks = document.getElementById('channel-blocks')
 
@@ -92,6 +97,11 @@ let renderBlock = (block) => {
 		</div>
 		<li>
 		`
+		modalTitle.innerHTML = block.title
+		modalDesc.innerHTML = block.description
+		// modalAlt.innerHTML = block.
+
+
 		channelBlocks.insertAdjacentHTML('beforeend', imageItem)
 		console.log('image')
 	}
@@ -141,10 +151,17 @@ let renderBlock = (block) => {
 			
 		let pdfItem =
 		`
-		<li>
-		<img src = ${block.image.original.url}>
-		<a href="${block.attachment.url}"> link to pdf </a>	
-		</li>
+					<li onclick="appModal()">
+				
+						<div class="wrapper">
+							<picture> 
+								<img src="${ block.image.original.url }">
+							</picture>
+							<div class="container-title">
+								<h3> ${ block.title } <h3>
+							</div>
+						</div>
+					<li>
 		`
 		channelBlocks.insertAdjacentHTML('beforeend', pdfItem)
 
@@ -176,19 +193,18 @@ let renderBlock = (block) => {
 			// …still up to you, but here’s an example `iframe` element:
 			let linkedVideoItem =
 				`
-			<li onclick="appModal()">
-		
-				<div class="wrapper">
-					<picture> 
-						<img src="${ block.image.original.url }">
-					</picture>
-
-					<div class="container-title">
-						<h3> ${ block.title } <h3>
-					</div>
-				</div>
-			<li>
+					<li onclick="appModal()">
 				
+						<div class="wrapper">
+							<picture> 
+								<img src="${ block.image.original.url }">
+							</picture>
+
+							<div class="container-title">
+								<h3> ${ block.title } <h3>
+							</div>
+						</div>
+					<li>
 				`
 			channelBlocks.insertAdjacentHTML('beforeend', linkedVideoItem)
 			// More on iframe: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
@@ -196,11 +212,20 @@ let renderBlock = (block) => {
 
 		// LINKED AUDIO
 		else if (embed.includes('rich')) {
-		let linkedAudioItem = `
-			<li>
-			<p><em>${block.title}</em></p>
-			${ block.embed.html }
-			</li>
+		let linkedAudioItem = 
+			`
+					<li onclick="appModal()">
+				
+						<div class="wrapper">
+							<picture> 
+								<img src="${ block.image.original.url }">
+							</picture>
+
+							<div class="container-title">
+								<h3> ${ block.title } <h3>
+							</div>
+						</div>
+					<li>
 			`
 		channelBlocks.insertAdjacentHTML('beforeend', linkedAudioItem)
 
