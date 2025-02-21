@@ -6,6 +6,17 @@ document.head.appendChild(markdownIt)
 let channelSlug = 'lost-in-translation-nrt9qfynwhg'
 
 
+let myModal = document.getElementById('modal')
+
+function hideModal() {
+	myModal.style.display = "none";
+}
+
+function appModal(){
+	myModal.style.display = "block"
+}
+
+
 // First, let’s lay out some *functions*, starting with our basic metadata:
 let placeChannelInfo = (data) => {
 	// Target some elements in your HTML:
@@ -14,12 +25,13 @@ let placeChannelInfo = (data) => {
 	let channelCount = document.getElementById('channel-count')
 	let channelLink = document.getElementById('channel-link')
 	let blockName = document.getElementById('title')
+	let ownerName = document.getElementById('channel-owner')
 
 	// channelTitle.innerHTML = data.title
 	// channelDescription.innerHTML = window.markdownit().render(data.metadata.description) // Converts Markdown → HTML
 	// channelCount.innerHTML = data.length
-	// channelLink.href = `https://www.are.na/channel/${channelSlug}`
-	// blockName.innerHTML = data.title
+	channelLink.href = `https://www.are.na/channel/${channelSlug}`
+	// ownerName.innerHTML = data.owner.slug
 }
 
 
@@ -29,12 +41,21 @@ let renderBlock = (block) => {
 	// To start, a shared `ul` where we’ll insert all our blocks
 	let channelBlocks = document.getElementById('channel-blocks')
 
+	// let blockTitle = `
+	// 	<p> ${ block.title } <p>
+	// 	`
+	// 	channelBlocks.insertAdjacentElement('beforeend', blockTitle)
+
+
 
 	// LINKS
 	if (block.class == 'Link') {
+
+
 		let linkItem =
 			`
-			<li>
+			<li onclick="appModal()"> 
+				<h3> ${ block.title } <h3>
 				<p><em>Link</em></p>
 				<picture>
 					<source srcset="${ block.image.thumb.url }">
@@ -57,10 +78,18 @@ let renderBlock = (block) => {
 
 		let imageItem = 
 		`
-		<li>
+		<li onclick="appModal()">
+		
+		<div class="wrapper">
 			<picture> 
 				<img src="${ block.image.original.url }">
 			</picture>
+
+			<div class="container-title">
+			<h3> ${ block.title } <h3>
+			</div>
+
+		</div>
 		<li>
 		`
 		channelBlocks.insertAdjacentHTML('beforeend', imageItem)
@@ -147,10 +176,19 @@ let renderBlock = (block) => {
 			// …still up to you, but here’s an example `iframe` element:
 			let linkedVideoItem =
 				`
-				<li>
-					<p><em>${block.title}</em></p>
-					${ block.embed.html }
-				</li>
+			<li onclick="appModal()">
+		
+				<div class="wrapper">
+					<picture> 
+						<img src="${ block.image.original.url }">
+					</picture>
+
+					<div class="container-title">
+						<h3> ${ block.title } <h3>
+					</div>
+				</div>
+			<li>
+				
 				`
 			channelBlocks.insertAdjacentHTML('beforeend', linkedVideoItem)
 			// More on iframe: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
