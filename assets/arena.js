@@ -59,7 +59,10 @@ let renderBlock = (block) => {
 
 		let linkItem =
 			`
-			<li onclick="appModal()"> 
+			<li onclick="appModal()">
+			<button>
+				<img src="${ block.	image.original.url }">
+			</button>
 				<h3> ${ block.title } <h3>
 				<p><em>Link</em></p>
 				<picture>
