@@ -6,15 +6,15 @@ document.head.appendChild(markdownIt)
 let channelSlug = 'lost-in-translation-nrt9qfynwhg'
 
 // MODAL
-let myModal = document.getElementById('modal')
+// let myModal = document.getElementById('modal')
 
-function hideModal() {
-	myModal.style.display = "none";
-}
+// function hideModal() {
+// 	myModal.style.display = "none";
+// }
 
-function appModal(){
-	myModal.style.display = "block"
-}
+// function appModal(){
+// 	myModal.style.display = "block"
+// }
 
 
 // Basic metadata:
@@ -26,7 +26,7 @@ let placeChannelInfo = (data) => {
 	let channelLink = document.getElementById('channel-link')
 	let blockName = document.getElementById('title')
 	let ownerName = document.getElementById('channel-owner')
-	
+
 
 	channelTitle.innerHTML = data.title
 	channelDescription.innerHTML = window.markdownit().render(data.metadata.description) // Converts Markdown → HTML
@@ -46,33 +46,23 @@ let renderBlock = (block) => {
 	// To start, a shared `ul` where we’ll insert all our blocks
 	let channelBlocks = document.getElementById('channel-blocks')
 
-	// let blockTitle = `
-	// 	<p> ${ block.title } <p>
-	// 	`
-	// 	channelBlocks.insertAdjacentElement('beforeend', blockTitle)
-
-
 
 	// LINKS
 	if (block.class == 'Link') {
 
-
 		let linkItem =
 			`
-			<li onclick="appModal()">
-			<button>
-				<img src="${ block.	image.original.url }">
-			</button>
-				<h3> ${ block.title } <h3>
-				<p><em>Link</em></p>
-				<picture>
-					<source srcset="${ block.image.thumb.url }">
-					<source srcset="${ block.image.large.url }">
-					<img src="${ block.	image.original.url }">
-				</picture>
-				<h3>${ block.title }</h3>
-				${ block.description_html }
-				<p><a href="${ block.source.url }">See the original ↗</a></p>
+			<li>
+				<div class="wrapper">
+					<picture>	
+						<source srcset="${ block.image.large.url }">
+						<source srcset="${ block.image.thumb.url }">
+						<img src="${ block.	image.original.url }">
+					</picture>
+					<div class="container-title">
+						<h3>${ block.title }</h3>
+					</div>
+				</div>
 			</li>
 			`
 		channelBlocks.insertAdjacentHTML('beforeend', linkItem)
@@ -86,23 +76,23 @@ let renderBlock = (block) => {
 
 		let imageItem = 
 		`
-		<li onclick="appModal()">
-		
-		<div class="wrapper">
-			<picture> 
-				<img src="${ block.image.original.url }">
-			</picture>
-
-			<div class="container-title">
-			<h3> ${ block.title } <h3>
-			</div>
-
-		</div>
-		<li>
+		<li class="image-block">
+			<button>
+				<div class="wrapper">
+					<picture> 
+						<img src="${ block.image.large.url }">
+					</picture>
+					<div class="container-title">
+						<h3> ${ block.title } <h3>
+					</div>
+				</div>
+			</button>
+			<dialog class="modal-styling">
+				<p>hello</p>
+				<button class="close"> Close </button>
+			</dialog>
+		</li>
 		`
-		modalTitle.innerHTML = block.title
-		modalDesc.innerHTML = block.description
-		// modalAlt.innerHTML = block.
 
 
 		channelBlocks.insertAdjacentHTML('beforeend', imageItem)
@@ -116,7 +106,7 @@ let renderBlock = (block) => {
 
 		let textItem =
 		`
-		<li>
+		<li class="uploaded-text">
 			<p>
 				${ block. content}
 			</p>
@@ -129,23 +119,21 @@ let renderBlock = (block) => {
 
 
 	// ALL UPLOADED MEDIA
-	else if (block.class == 'Attachment') {
-		let attachment = block.attachment.content_type // Save us some repetition
 
+	else if (block.class == 'Attachment') {
+		let attachment = block.attachment.content_type
 
 		// UPLOADED VIDEOS
 		if (attachment.includes('video')) {
 			// …still up to you, but we’ll give you the `video` element:
 			let videoItem =
 				`
-				<li>
+				<li class="uploaded-video">
 					<p><em>Video</em></p>
 					<video controls src="${ block.attachment.url }"></video>
 				</li>
 				`
 			channelBlocks.insertAdjacentHTML('beforeend', videoItem)
-			// More on video, like the `autoplay` attribute:
-			// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
 		}
 
 
@@ -154,17 +142,17 @@ let renderBlock = (block) => {
 			
 		let pdfItem =
 		`
-					<li onclick="appModal()">
+					<li class="uploaded-pdf">
 				
 						<div class="wrapper">
 							<picture> 
 								<img src="${ block.image.original.url }">
 							</picture>
 							<div class="container-title">
-								<h3> ${ block.title } <h3>
+								<h3> ${ block.title } </h3>
 							</div>
 						</div>
-					<li>
+					</li>
 		`
 		channelBlocks.insertAdjacentHTML('beforeend', pdfItem)
 
@@ -176,13 +164,12 @@ let renderBlock = (block) => {
 			// …still up to you, but here’s an `audio` element:
 			let audioItem =
 				`
-				<li>
+				<li class="uploaded-audio">
 					<p><em>Audio</em></p>
 					<audio controls src="${ block.attachment.url }"></video>
 				</li>
 				`
 			channelBlocks.insertAdjacentHTML('beforeend', audioItem)
-			// More on audio: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
 		}
 	}
 
@@ -196,18 +183,16 @@ let renderBlock = (block) => {
 			// …still up to you, but here’s an example `iframe` element:
 			let linkedVideoItem =
 				`
-					<li onclick="appModal()">
-				
+					<li class="linked-video">
 						<div class="wrapper">
 							<picture> 
 								<img src="${ block.image.original.url }">
 							</picture>
-
 							<div class="container-title">
 								<h3> ${ block.title } <h3>
 							</div>
 						</div>
-					<li>
+					</li>
 				`
 			channelBlocks.insertAdjacentHTML('beforeend', linkedVideoItem)
 			// More on iframe: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
@@ -217,7 +202,7 @@ let renderBlock = (block) => {
 		else if (embed.includes('rich')) {
 		let linkedAudioItem = 
 			`
-					<li onclick="appModal()">
+					<li class="linked-audio">
 				
 						<div class="wrapper">
 							<picture> 
@@ -237,17 +222,163 @@ let renderBlock = (block) => {
 }
 
 
-// It‘s always good to credit your work:
-let renderUser = (user, container) => { // You can have multiple arguments for a function!
-	let userAddress =
-		`
-		<address>
-			<img src="${ user.avatar_image.display }">
-			<h3>${ user.first_name }</h3>
-			<p><a href="https://are.na/${ user.slug }">Are.na profile ↗</a></p>
-		</address>
-		`
-	container.insertAdjacentHTML('beforeend', userAddress)
+
+
+let initInteraction = () => {
+	let  linkBlocks = document.querySelectorAll('.link-block')
+	linkBlocks.forEach((block) => {
+		let openButton = block.querySelector('button')
+		let dialog = block.querySelector('dialog')
+		console.log(dialog)
+		let closeButton = dialog.querySelector('button')
+
+		openButton.onclick = () => {
+			dialog.showModal()
+			console.log('hello world')
+		}
+
+		closeButton.onclick = () => {
+			dialog.close()
+		}
+
+		dialog.onclick = (event) => {
+			if (event.target == dialog) {
+				dialog.close()
+			}
+		}
+	})
+
+	let  imageBlocks = document.querySelectorAll('.image-block')
+	imageBlocks.forEach((block) => {
+		let openButton = block.querySelector('button')
+		let dialog = block.querySelector('dialog')
+		let closeButton = dialog.querySelector('button')
+
+		openButton.onclick = () => {
+			dialog.showModal()
+		}
+
+		closeButton.onclick = () => {
+			dialog.close()
+		}
+
+		dialog.onclick = (event) => {
+			if (event.target == dialog) {
+				dialog.close()
+			}
+		}
+	})
+
+	let  textBlocks = document.querySelectorAll('.text-block')
+	textBlocks.forEach((block) => {
+		let openButton = block.querySelector('button')
+		let dialog = block.querySelector('dialog')
+		let closeButton = dialog.querySelector('button')
+
+		openButton.onclick = () => {
+			dialog.showModal()
+		}
+
+		closeButton.onclick = () => {
+			dialog.close()
+		}
+
+		dialog.onclick = (event) => {
+			if (event.target == dialog) {
+				dialog.close()
+			}
+		}
+	})
+
+	let  videoBlocks = document.querySelectorAll('.video-block')
+	videoBlocks.forEach((block) => {
+		let openButton = block.querySelector('button')
+		let dialog = block.querySelector('dialog')
+		let closeButton = dialog.querySelector('button')
+
+		openButton.onclick = () => {
+			dialog.showModal();
+
+		}
+
+		closeButton.onclick = () => {
+			dialog.close()
+		}
+
+		dialog.onclick = (event) => {
+			if (event.target == dialog) {
+				dialog.close()
+			}
+		}
+	})
+
+	let  audioBlocks = document.querySelectorAll('.audio-block')
+	audioBlocks.forEach((block) => {
+		let openButton = block.querySelector('button')
+		let dialog = block.querySelector('dialog')
+		let closeButton = dialog.querySelector('button')
+
+
+		openButton.onclick = () => {
+			dialog.showModal();
+
+		}
+
+		closeButton.onclick = () => {
+			dialog.close()
+		}
+
+		dialog.onclick = (event) => {
+			if (event.target == dialog) {
+				dialog.close()
+			}
+		}
+	})
+
+	let  mediaBlocks = document.querySelectorAll('.media-block')
+
+	mediaBlocks.forEach((block) => {
+		let openButton = block.querySelector('button')
+		let dialog = block.querySelector('dialog')
+		let closeButton = dialog.querySelector('button')
+
+		openButton.onclick = () => {
+			dialog.showModal()
+		}
+
+		closeButton.onclick = () => {
+			dialog.close()
+		}
+
+		dialog.onclick = (event) => {
+			if (event.target == dialog) {
+				dialog.close()
+			}
+		}
+	})
+
+	let  pdfBlocks = document.querySelectorAll('.pdf-block')
+	pdfBlocks.forEach((block) => {
+		let openButton = block.querySelector('button')
+		let dialog = block.querySelector('dialog')
+		let closeButton = dialog.querySelector('button')
+
+
+		openButton.onclick = () => {
+			dialog.showModal();
+
+		}
+
+		closeButton.onclick = () => {
+			dialog.close()
+		}
+
+		dialog.onclick = (event) => {
+			if (event.target == dialog) {
+				dialog.close()
+			}
+		}
+	})
 }
 
 
@@ -263,6 +394,8 @@ fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-stor
 			// console.log(block) // The data for a single block
 			renderBlock(block) // Pass the single block data to the render function
 		})
+
+		initInteraction()
 
 		// Also display the owner and collaborators:
 		let channelUsers = document.getElementById('channel-users') // Show them together

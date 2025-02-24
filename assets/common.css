@@ -81,17 +81,14 @@ img {
 	object-fit: fill
 }
 
-#modal {
-	display: none;
-	background-color: var(--primary-color);
-	z-index: 1000;
-	margin: auto;
-	width: 70vw;
-	height: 70vh;
-	margin-left: auto;
-	margin-right: auto;
+.modal-styling {
 	position: fixed;
-	transform: translate(25%,-12.5%);
+	transform: translate(12.5%, 12.5%);
+	width: 75%;
+	height: 75%;
+	/* max-width: 500px; */
+	font-size: 5rem;
+	background-color: tomato;
 }
 
 .block-container:hover {
@@ -139,6 +136,7 @@ h2 {
 h3 {
 	color: white;
 	font-size: 20rem;
+	/* justify-content: center; */
 	/* max-width: fit-content; */
 	/* font-size: clamp(15rem, 10vw, 15rem); */
 	white-space: nowrap;
@@ -195,6 +193,14 @@ li {
 
 p {
 	color: var(--primary-color);
+}
+
+.text-block {
+	font-family: var(--primary-font);
+	font-size: 7rem;
+	line-height: 8rem;
+	max-width: 20ch;
+	margin: auto;
 }
 
 .block-container p {
