@@ -137,6 +137,10 @@ h2 {
 h3 {
 	color: white;
 	font-size: 15vw;
+	position: sticky;
+	bottom: 10rem;
+	mix-blend-mode: difference;
+	font-family: var(--primary-font);
 }
 
 .wrapper{
