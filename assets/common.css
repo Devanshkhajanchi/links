@@ -37,16 +37,28 @@ nav li {
 	margin-block: 2rem;
 }
 
-nav li :nth-child(1) {
-	justify-content: left;
-}
 
-nav li :nth-child(2) {
-	justify-content: center;
-}
+nav li {
 
-nav li :nth-child(3) {
-	justify-content: right;
+	font-size: 2rem;
+	padding-inline: 5rem;
+	margin: auto;
+	:hover {
+		color: grey;
+		cursor: pointer;
+	}
+	
+	:nth-child(1) {
+		justify-content: left;
+	}
+
+	:nth-child(2) {
+		justify-content: center;
+	}
+
+	:nth-child(3) {
+		justify-content: right;
+	}
 }
 
 #project-title {
@@ -71,7 +83,7 @@ img {
 
 #modal {
 	display: none;
-	background-color: aqua;
+	background-color: var(--primary-color);
 	z-index: 1000;
 	margin: auto;
 	width: 70vw;
@@ -124,7 +136,7 @@ h2 {
 
 h3 {
 	color: white;
-	font-size: 15rem;
+	font-size: 15vw;
 }
 
 .wrapper{
@@ -155,8 +167,16 @@ blockquote {
 	max-width: 35ch;
 }
 
+li {
+	list-style-type: none;
+  }
+
 p {
 	color: var(--primary-color);
+}
+
+.block-container p {
+	/* font-size: 1vw; */
 }
 
 picture {
