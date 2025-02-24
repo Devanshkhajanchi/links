@@ -28,7 +28,7 @@ let placeChannelInfo = (data) => {
 	let ownerName = document.getElementById('channel-owner')
 	
 
-	// channelTitle.innerHTML = data.title
+	channelTitle.innerHTML = data.title
 	// channelDescription.innerHTML = window.markdownit().render(data.metadata.description) // Converts Markdown → HTML
 	// channelCount.innerHTML = data.length
 	channelLink.href = `https://www.are.na/channel/${channelSlug}`
