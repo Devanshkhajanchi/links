@@ -5,7 +5,7 @@ document.head.appendChild(markdownIt)
 // CHANNEL SLUG
 let channelSlug = 'lost-in-translation-nrt9qfynwhg'
 
-
+// MODAL
 let myModal = document.getElementById('modal')
 
 function hideModal() {
@@ -17,7 +17,7 @@ function appModal(){
 }
 
 
-// First, let’s lay out some *functions*, starting with our basic metadata:
+// Basic metadata:
 let placeChannelInfo = (data) => {
 	// Target some elements in your HTML:
 	let channelTitle = document.getElementById('channel-title')
@@ -29,7 +29,7 @@ let placeChannelInfo = (data) => {
 	
 
 	channelTitle.innerHTML = data.title
-	// channelDescription.innerHTML = window.markdownit().render(data.metadata.description) // Converts Markdown → HTML
+	channelDescription.innerHTML = window.markdownit().render(data.metadata.description) // Converts Markdown → HTML
 	// channelCount.innerHTML = data.length
 	channelLink.href = `https://www.are.na/channel/${channelSlug}`
 	ownerName.innerHTML = data.owner.slug

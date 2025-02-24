@@ -1,9 +1,13 @@
 const maskCircle = document.getElementById("mask-circle");
 
-document.addEventListener("mousemove", (event) => {
-    const { clientX, clientY } = event;
+// Used 'add event listener' to target the cursor
+// https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
 
-	// Offset slightly to align with cursor
+document.addEventListener("mousemove", (event) => {
+	const { clientX, clientY } = event;
+
+// Offsetting cursor
+// https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute
 	maskCircle.setAttribute("cx", clientX);
-	maskCircle.setAttribute("cy", clientY - 150); // Adjust upward
+	maskCircle.setAttribute("cy", clientY - 200); // Adjust upward
 });
