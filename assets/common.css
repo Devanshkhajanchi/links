@@ -58,29 +58,6 @@ nav li {
 }
 
 
-/* nav li {
-
-	font-size: 1.2rem;
-	padding-inline: 3rem;
-	margin: auto;
-	:hover {
-		color: grey;
-		cursor: pointer;
-	}
-	
-	:nth-child(1) {
-		justify-content: left;
-	}
-
-	:nth-child(2) {
-		justify-content: center;
-	}
-
-	:nth-child(3) {
-		justify-content: right;
-	}
-} */
-
 #project-title {
 	height: 100vh;
 }
@@ -127,12 +104,13 @@ dialog {
 	backdrop-filter: blur(75px) brightness(300%);
 	overflow: hidden;
 	border-radius: 0.15rem;
+	overflow-y: auto;
 }
 
 .modal-title {
 	color: white;
 	font-family: var(--primary-font);
-	font-size: 2rem;
+	font-size: 3rem;
 }
 
 .modal-media {
@@ -150,9 +128,9 @@ dialog {
 
 .modal-text {
 	color: var(--secondary-color);
-	font-family: var(--secondary-font);
-	font-size: 1.2rem;
-	line-height: 1.5rem;
+	font-family: var(--primary-font);
+	font-size: 1.5rem;
+	line-height: 1.8rem;
 }
 
 .block-description {
@@ -310,6 +288,12 @@ footer {
 	}
 }
 
+button {
+	:hover {
+		cursor: pointer;
+	}
+}
+
 dialog::backdrop {
 	background: rgba(0, 0, 0, 0.8);
 	backdrop-filter: blur(5px);
@@ -391,17 +375,12 @@ dialog {
 	max-width: 800px;
 	max-height: 80vh;
 	overflow-y: auto;
-	padding: 20px;
-	display: flex;
-	flex-direction: column;
+	padding: 50px;
 	justify-content: space-between;
 	position: fixed;
 	transform: translate(5%, 5%);
 	width: 90vw;
 	height: 100vh;
-	background: rgba(255, 255, 255, 0.2);
-	border: 1.5px solid rgba(255, 255, 255, 0.2);
-	backdrop-filter: blur(75px) brightness(300%);
 	overflow: hidden;
 	border-radius: 0.15rem;
 }
@@ -409,7 +388,7 @@ dialog {
 .modal-title {
 	color: white;
 	font-family: var(--primary-font);
-	font-size: 2rem;
+	font-size: 4rem;
 }
 
 .modal-media {
@@ -419,7 +398,7 @@ dialog {
 
 	img {
 		margin: auto;
-		max-height: 250px;
+		max-height: 500px;
 		width: auto;
 		display: block;
 	}
@@ -427,9 +406,12 @@ dialog {
 
 .modal-text {
 	color: var(--secondary-color);
-	font-family: var(--secondary-font);
-	font-size: 1.2rem;
-	line-height: 1.5rem;
+	font-family: var(--primary-font);
+	font-size: 1.5rem;
+	line-height: 1.8rem;
+	letter-spacing: 0.02rem;
+	max-width: 32ch;
+	
 }
 
 .block-description {
@@ -440,6 +422,8 @@ dialog {
 	line-height: 1.5rem;
 	max-width: 45ch;
 }
+
+	/* modal styling ends here */
 
 .block-text-styling {
 	font-size: 4rem;
@@ -515,23 +499,57 @@ dialog {
 
 /* MODAL */
 
-	dialog {
-		align-items: center;
-		max-width: 1200px;
-		max-height: 80vh;
-		overflow-y: auto;
-		padding: 20px;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		position: fixed;
-		transform: translate(5%, 5%);
-		width: 90vw;
-		height: 100vh;
-		background-color: var(--primary-color);
-		overflow: hidden;
-		border-radius: 0.15rem;
+dialog {
+	align-items: center;
+	max-width: 1200px;
+	max-height: 80vh;
+	overflow-y: auto;
+	padding: 50px;
+	justify-content: space-between;
+	position: fixed;
+	transform: translate(5%, 5%);
+	width: 90vw;
+	height: 100vh;
+	overflow: hidden;
+	border-radius: 0.15rem;
+}
+
+.modal-title {
+	color: white;
+	font-family: var(--primary-font);
+	font-size: 5rem;
+}
+
+.modal-media {
+	display: flex;
+	flex-direction: row;
+	gap: 3rem;
+
+	img {
+		margin: auto;
+		max-height: 500px;
+		width: auto;
+		display: block;
 	}
+}
+
+.modal-text {
+	color: var(--secondary-color);
+	font-family: var(--primary-font);
+	font-size: 1.8rem;
+	line-height: 2rem;
+}
+
+.block-description {
+	color: var(--primary-color);
+	font-family: var(--secondary-font);
+	letter-spacing: 0.04rem;
+	font-size: 1.2rem;
+	line-height: 1.5rem;
+	max-width: 45ch;
+}
+
+	/* modal styling ends here */
 
 
 	.block-text-styling {
