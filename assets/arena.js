@@ -67,8 +67,11 @@ let renderBlock = (block) => {
 					<p class="modal-title">${ block.title }</p>
 					<div class="modal-media">
 						<img src="${ block.image.large.url }">
+						<div class="desc-subtext">
+							<p class="block-description"> ${block.description} </P>
+							<p class="block-description"><a href="${block.source.url}">Visit Page</a></p>
+						</div>
 					</div>
-					<p class="block-description"> ${block.description} </P>
 					<button class="close"> × </button>
 				</dialog>
 			</li>
@@ -202,8 +205,8 @@ let renderBlock = (block) => {
 			<dialog class="modal-styling">
 				<p class="modal-title"> ${ block.title} </p>
 				<div class="modal-media">
-				<img src="${ block.image.thumb.url }">
-				<p class="block-description"> ${block.description} </p>
+					<img src="${ block.image.thumb.url }">
+					<p class="block-description"> ${block.description} </p>
 				</div>
 				<button class="close"> × </button>
 			</dialog>
@@ -264,8 +267,10 @@ let renderBlock = (block) => {
 					</button>
 					<dialog class="modal-styling">
 						<p class="modal-title"> ${ block.title} </p>
-						<div> ${ block.embed.html } </div>
-						<p class="block-description"> ${block.description} </P>
+						<div class="modal-media">
+							<div> <img>${ block.embed.html } </img> </div>
+							<p class="block-description"> ${block.description} </P>
+						</div>
 						<button class="close"> × </button>
 					</dialog>
 				</li>
@@ -278,7 +283,7 @@ let renderBlock = (block) => {
 		else if (embed.includes('rich')) {
 		let linkedAudioItem = 
 			`
-			<li class="linked-audio">
+			<li class="audio-block">
 				<button>
 					<div class="wrapper">
 						<picture> 
@@ -289,14 +294,15 @@ let renderBlock = (block) => {
 						</div>
 					</div>
 				</button>
-				</div>
 				<dialog class="modal-styling">
 					<p class="modal-title"> ${ block.title} </p>
-					<div>${ block.embed.html }</div>
-					<p class="block-description"> ${block.description} </P>
+					<div class="modal-media">
+						<div> <img>${ block.embed.html } </img> </div>
+						<p class="block-description"> ${block.description} </P>
+						</div>
 					<button class="close"> × </button>
 				</dialog>
-			<li>
+			</li>
 			`
 		channelBlocks.insertAdjacentHTML('beforeend', linkedAudioItem)
 

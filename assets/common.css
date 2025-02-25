@@ -294,6 +294,12 @@ button {
 	}
 }
 
+a {
+	:hover {
+		cursor: pointer;
+	}
+}
+
 dialog::backdrop {
 	background: rgba(0, 0, 0, 0.8);
 	backdrop-filter: blur(5px);
@@ -423,6 +429,12 @@ dialog {
 	max-width: 45ch;
 }
 
+.desc-subtext {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
 	/* modal styling ends here */
 
 .block-text-styling {
@@ -504,7 +516,7 @@ dialog {
 	max-width: 1200px;
 	max-height: 80vh;
 	overflow-y: auto;
-	padding: 50px;
+	padding-top: 1rem;
 	justify-content: space-between;
 	position: fixed;
 	transform: translate(5%, 5%);
