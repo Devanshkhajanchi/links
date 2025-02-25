@@ -56,8 +56,6 @@ let renderBlock = (block) => {
 			<button>
 				<div class="wrapper">
 					<picture>	
-						<source srcset="${ block.image.large.url }">
-						<source srcset="${ block.image.thumb.url }">
 						<img src="${ block.	image.original.url }">
 					</picture>
 					<div class="container-title">
@@ -68,14 +66,10 @@ let renderBlock = (block) => {
 				<dialog class="modal-styling">
 					<p class="modal-title">${ block.title }</p>
 					<div class="modal-media">
-						<picture> 
-							<img src="${ block.image.large.url }">
-						</picture>
+						<img src="${ block.image.large.url }">
 					</div>
-					<p class="block-description">
-						${block.description}
-					</P>
-					<button class="close"> Close </button>
+					<p class="block-description"> ${block.description} </P>
+					<button class="close"> × </button>
 				</dialog>
 			</li>
 			`
@@ -86,6 +80,7 @@ let renderBlock = (block) => {
 
 
 	// IMAGES
+
 	else if (block.class == 'Image') {
 
 		let imageItem = 
@@ -104,18 +99,13 @@ let renderBlock = (block) => {
 			<dialog class="modal-styling">
 				<p class="modal-title"> ${ block.title} </p>
 				<div class="modal-media">
-					<picture> 
-						<img src="${ block.image.large.url }">
-					</picture>
-					<p class="block-description">
-						${block.description}
-					</P>
+					<picture> <img src="${ block.image.large.url }"> </picture>
+					<p class="block-description"> ${block.description} </p>
 				</div>
-				<button class="close"> Close </button>
+				<button class="close"> × </button>
 			</dialog>
 		</li>
 		`
-
 
 		channelBlocks.insertAdjacentHTML('beforeend', imageItem)
 		console.log('image')
@@ -123,6 +113,7 @@ let renderBlock = (block) => {
 
 
 	// TEXT
+
 	else if (block.class == 'Text') {
 
 		let textItem =
@@ -141,14 +132,10 @@ let renderBlock = (block) => {
 			<dialog class="modal-styling">
 				<p class="modal-title"> ${ block.title} </p>
 				<div class="modal-media">
-					<p class="modal-text"> 
-						${ block. content}
-					</p>
-					<p class="block-description">
-						${block.description}
-					</P>
+					<p class="modal-text"> ${ block. content} </p>
+					<p class="block-description"> ${block.description} </P>
 				</div>
-				<button class="close"> Close </button>
+				<button class="close"> × </button>
 			</dialog>
 		</li>
 		`
@@ -163,7 +150,9 @@ let renderBlock = (block) => {
 	else if (block.class == 'Attachment') {
 		let attachment = block.attachment.content_type
 
+
 		// UPLOADED VIDEOS
+
 		if (attachment.includes('video')) {
 			// …still up to you, but we’ll give you the `video` element:
 			let videoItem =
@@ -171,8 +160,7 @@ let renderBlock = (block) => {
 				<li class="attachment-block">
 					<button>
 						<div class="wrapper">
-							<video controls src="${ block.attachment.url }">
-							</video>
+							<video controls src="${ block.attachment.url }"> </video>
 							<div class="container-title">
 								<h3> ${ block.title} <h3>
 							</div>
@@ -180,10 +168,10 @@ let renderBlock = (block) => {
 					</button>
 					<dialog class="modal-styling">
 						<p class="modal-title"> ${ block.title} </p>
-						<p class="block-description">
-							${block.description}
-						</P>
-						<button class="close"> Close </button>
+						<div class="modal-media">
+							<p class="block-description"> ${block.description} </P>
+						</div>
+						<button class="close"> × </button>
 					</dialog>
 				</li>
 				`
@@ -195,6 +183,7 @@ let renderBlock = (block) => {
 
 
 		// UPLOADED PDFS
+
 		else if (attachment.includes('pdf')) {
 			
 		let pdfItem =
@@ -212,10 +201,11 @@ let renderBlock = (block) => {
 			</button>
 			<dialog class="modal-styling">
 				<p class="modal-title"> ${ block.title} </p>
-				<p class="block-description">
-					${block.description}
-				</P>
-				<button class="close"> Close </button>
+				<div class="modal-media">
+				<img src="${ block.image.thumb.url }">
+				<p class="block-description"> ${block.description} </p>
+				</div>
+				<button class="close"> × </button>
 			</dialog>
 		</li>
 		`
@@ -225,6 +215,7 @@ let renderBlock = (block) => {
 
 
 		// UPLOADED AUDIO
+
 		else if (attachment.includes('audio')) {
 			// …still up to you, but here’s an `audio` element:
 			let audioItem =
@@ -240,10 +231,8 @@ let renderBlock = (block) => {
 					</button>
 					<dialog class="modal-styling">
 						<p class="modal-title"> ${ block.title} </p>
-						<p class="block-description">
-							${block.description}
-						</P>
-						<button class="close"> Close </button>
+						<p class="block-description"> ${block.description} </P>
+						<button class="close"> × </button>
 					</dialog>
 				</li>
 				`
@@ -253,12 +242,13 @@ let renderBlock = (block) => {
 
 
 	// ALL LINKED MEDIA
+
 	else if (block.class == 'Media') {
 		let embed = block.embed.type
 
 		// LINKED VIDEO
+
 		if (embed.includes('video')) {
-			// …still up to you, but here’s an example `iframe` element:
 			let linkedVideoItem =
 				`
 				<li class="media-block">
@@ -274,10 +264,9 @@ let renderBlock = (block) => {
 					</button>
 					<dialog class="modal-styling">
 						<p class="modal-title"> ${ block.title} </p>
-						<p class="block-description">
-							${block.description}
-						</P>
-						<button class="close"> Close </button>
+						<div> ${ block.embed.html } </div>
+						<p class="block-description"> ${block.description} </P>
+						<button class="close"> × </button>
 					</dialog>
 				</li>
 				`
@@ -285,26 +274,27 @@ let renderBlock = (block) => {
 		}
 
 		// LINKED AUDIO
+
 		else if (embed.includes('rich')) {
 		let linkedAudioItem = 
 			`
 			<li class="linked-audio">
 				<button>
 					<div class="wrapper">
-					<picture> 
-						<img src="${ block.image.original.url }">
-					</picture>
-					<div class="container-title">
-						<h3> ${ block.title } <h3>
+						<picture> 
+							<img src="${ block.image.original.url }">
+						</picture>
+						<div class="container-title">
+							<h3> ${ block.title } <h3>
+						</div>
 					</div>
 				</button>
 				</div>
 				<dialog class="modal-styling">
 					<p class="modal-title"> ${ block.title} </p>
-					<p class="block-description">
-						${block.description}
-					</P>
-					<button class="close"> Close </button>
+					<div>${ block.embed.html }</div>
+					<p class="block-description"> ${block.description} </P>
+					<button class="close"> × </button>
 				</dialog>
 			<li>
 			`
