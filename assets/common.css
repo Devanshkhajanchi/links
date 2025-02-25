@@ -129,7 +129,6 @@ img {
 }
 
 .block-container:hover {
-	filter: none;
 	cursor: pointer;
 }
 
@@ -172,7 +171,7 @@ h2 {
 
 h3 {
 	color: white;
-	font-size: 15rem;
+	font-size: 5rem;
 	white-space: nowrap;
 	overflow: hidden;
 	position: sticky;
@@ -217,23 +216,24 @@ blockquote {
 	margin: auto;
 	padding-inline: 2rem;
 	align-content: center;
-	/* grid-template-columns: repeat(4, 1fr);
-	grid-column: 3/4; */
 }
 
 li {
 	list-style-type: none;
-  }
+}
 
 p {
 	color: var(--primary-color);
 }
 
-.text-block {
+.block-text-styling {
 	font-family: var(--primary-font);
-	font-size: 7rem;
-	line-height: 8rem;
-	max-width: 20ch;
+	text-align: center;
+	opacity: 10%;
+	font-size: 2rem;
+	line-height: 2rem;
+	/* max-width: 30ch; */
+	padding-inline: 3rem;
 	margin: auto;
 }
 
@@ -270,30 +270,6 @@ footer {
 	}
 }
 
-/* MASKING TRIAL */
-
-/* Blurred Background Text */
-.blurred {
-	filter: blur(1rem);
-	color: #313131;
-}
-
-/* Sharp Text (Background) */
-.sharp {
-	filter: blur(0);
-	mask: url(#mask);
-	-webkit-mask: url(#mask);
-}
-
-/* MASK (Foreground) */
-.mask-svg {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	pointer-events: none;
-}
 
 .hide {
 	display: none;
@@ -333,6 +309,31 @@ footer {
 		line-height: 4rem;
 		padding-inline: 3rem;
 	}
+
+	/* MASKING TRIAL */
+
+/* Blurred Background Text */
+.blurred {
+	filter: blur(1rem);
+	color: #313131;
+}
+
+/* Sharp Text (Background) */
+.sharp {
+	filter: blur(0);
+	mask: url(#mask);
+	-webkit-mask: url(#mask);
+}
+
+/* MASK (Foreground) */
+.mask-svg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+}
 
 	footer {
 		li {

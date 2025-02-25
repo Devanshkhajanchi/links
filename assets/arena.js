@@ -72,6 +72,9 @@ let renderBlock = (block) => {
 							<img src="${ block.image.large.url }">
 						</picture>
 					</div>
+					<p class="block-description">
+						${block.description}
+					</P>
 					<button class="close"> Close </button>
 				</dialog>
 			</li>
@@ -127,7 +130,7 @@ let renderBlock = (block) => {
 		<li class="text-block">
 			<button>
 				<div class="wrapper">
-					<p>
+					<p class="block-text-styling">
 						${ block. content}
 					</p>
 					<div class="container-title">
@@ -177,7 +180,9 @@ let renderBlock = (block) => {
 					</button>
 					<dialog class="modal-styling">
 						<p class="modal-title"> ${ block.title} </p>
-
+						<p class="block-description">
+							${block.description}
+						</P>
 						<button class="close"> Close </button>
 					</dialog>
 				</li>
@@ -207,7 +212,9 @@ let renderBlock = (block) => {
 			</button>
 			<dialog class="modal-styling">
 				<p class="modal-title"> ${ block.title} </p>
-
+				<p class="block-description">
+					${block.description}
+				</P>
 				<button class="close"> Close </button>
 			</dialog>
 		</li>
@@ -233,7 +240,9 @@ let renderBlock = (block) => {
 					</button>
 					<dialog class="modal-styling">
 						<p class="modal-title"> ${ block.title} </p>
-
+						<p class="block-description">
+							${block.description}
+						</P>
 						<button class="close"> Close </button>
 					</dialog>
 				</li>
@@ -265,7 +274,9 @@ let renderBlock = (block) => {
 					</button>
 					<dialog class="modal-styling">
 						<p class="modal-title"> ${ block.title} </p>
-
+						<p class="block-description">
+							${block.description}
+						</P>
 						<button class="close"> Close </button>
 					</dialog>
 				</li>
@@ -290,7 +301,9 @@ let renderBlock = (block) => {
 				</div>
 				<dialog class="modal-styling">
 					<p class="modal-title"> ${ block.title} </p>
-
+					<p class="block-description">
+						${block.description}
+					</P>
 					<button class="close"> Close </button>
 				</dialog>
 			<li>
