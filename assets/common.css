@@ -8,13 +8,13 @@
 /* TYPE */
 
 	--primary-font: Gambarino;
+	--secondary-font: baskerville;
 
 /* COLOR */
 
 	--primary-color: white;
-	--secondary-color: blue;
+	--secondary-color: black;
 	background-color: #121212;
-	font-family: baskerville;
 }
 
 
@@ -72,7 +72,7 @@ nav li {
 
 .block-container {
 	width: 100vw;
-	filter: saturate(0);
+	/* filter: saturate(0); */
 }
 
 
@@ -81,14 +81,51 @@ img {
 	object-fit: fill
 }
 
+.image-block {
+	/* padding: 2rem; */
+	display: flex;
+	flex-direction: row;
+}
+
+/* MODAL STYLING */
+
 .modal-styling {
+	display: flex;
+	flex-direction: column;
 	position: fixed;
-	transform: translate(12.5%, 12.5%);
+	transform: translate(14%, 12.5%);
 	width: 75%;
 	height: 75%;
-	/* max-width: 500px; */
 	font-size: 5rem;
-	background-color: tomato;
+	background-color: var(--primary-color);
+	overflow: hidden;
+}
+
+.modal-media {
+	max-width: 250px;
+}
+
+.modal-title {
+	color: black;
+	font-family: var(--primary-font);
+}
+
+.modal-text {
+	color: var(--secondary-color);
+	font-family: var(--secondary-font);
+	font-size: 1.2rem;
+	line-height: 1.5rem;
+}
+
+.block-description {
+	color: var(--secondary-color);
+	font-family: var(--secondary-font);
+	font-size: 1.2rem;
+	line-height: 1.5rem;
+}
+
+.close {
+	font-size: 2rem;
 }
 
 .block-container:hover {
@@ -135,10 +172,7 @@ h2 {
 
 h3 {
 	color: white;
-	font-size: 20rem;
-	/* justify-content: center; */
-	/* max-width: fit-content; */
-	/* font-size: clamp(15rem, 10vw, 15rem); */
+	font-size: 15rem;
 	white-space: nowrap;
 	overflow: hidden;
 	position: sticky;
@@ -203,9 +237,6 @@ p {
 	margin: auto;
 }
 
-.block-container p {
-	/* font-size: 1vw; */
-}
 
 picture {
 	width: 100vw;

@@ -52,7 +52,8 @@ let renderBlock = (block) => {
 
 		let linkItem =
 			`
-			<li>
+			<li class="link-block">
+			<button>
 				<div class="wrapper">
 					<picture>	
 						<source srcset="${ block.image.large.url }">
@@ -62,7 +63,17 @@ let renderBlock = (block) => {
 					<div class="container-title">
 						<h3>${ block.title }</h3>
 					</div>
-				</div>
+					</div>
+				</button>
+				<dialog class="modal-styling">
+					<p class="modal-title">${ block.title }</p>
+					<div class="modal-media">
+						<picture> 
+							<img src="${ block.image.large.url }">
+						</picture>
+					</div>
+					<button class="close"> Close </button>
+				</dialog>
 			</li>
 			`
 		channelBlocks.insertAdjacentHTML('beforeend', linkItem)
@@ -88,7 +99,15 @@ let renderBlock = (block) => {
 				</div>
 			</button>
 			<dialog class="modal-styling">
-				<p>hello</p>
+				<p class="modal-title"> ${ block.title} </p>
+				<div class="modal-media">
+					<picture> 
+						<img src="${ block.image.large.url }">
+					</picture>
+					<p class="block-description">
+						${block.description}
+					</P>
+				</div>
 				<button class="close"> Close </button>
 			</dialog>
 		</li>
@@ -102,14 +121,32 @@ let renderBlock = (block) => {
 
 	// TEXT
 	else if (block.class == 'Text') {
-		// …up to you!
 
 		let textItem =
 		`
-		<li class="uploaded-text">
-			<p>
-				${ block. content}
-			</p>
+		<li class="text-block">
+			<button>
+				<div class="wrapper">
+					<p>
+						${ block. content}
+					</p>
+					<div class="container-title">
+						<h3> ${ block.title } </h3>
+					</div>
+				</div>
+			</button>
+			<dialog class="modal-styling">
+				<p class="modal-title"> ${ block.title} </p>
+				<div class="modal-media">
+					<p class="modal-text"> 
+						${ block. content}
+					</p>
+					<p class="block-description">
+						${block.description}
+					</P>
+				</div>
+				<button class="close"> Close </button>
+			</dialog>
 		</li>
 		`
 		channelBlocks.insertAdjacentHTML('beforeend', textItem)
@@ -128,11 +165,26 @@ let renderBlock = (block) => {
 			// …still up to you, but we’ll give you the `video` element:
 			let videoItem =
 				`
-				<li class="uploaded-video">
-					<p><em>Video</em></p>
-					<video controls src="${ block.attachment.url }"></video>
+				<li class="attachment-block">
+					<button>
+						<div class="wrapper">
+							<video controls src="${ block.attachment.url }">
+							</video>
+							<div class="container-title">
+								<h3> ${ block.title} <h3>
+							</div>
+						</div>
+					</button>
+					<dialog class="modal-styling">
+						<p class="modal-title"> ${ block.title} </p>
+
+						<button class="close"> Close </button>
+					</dialog>
 				</li>
 				`
+
+
+
 			channelBlocks.insertAdjacentHTML('beforeend', videoItem)
 		}
 
@@ -142,17 +194,23 @@ let renderBlock = (block) => {
 			
 		let pdfItem =
 		`
-					<li class="uploaded-pdf">
-				
-						<div class="wrapper">
-							<picture> 
-								<img src="${ block.image.original.url }">
-							</picture>
-							<div class="container-title">
-								<h3> ${ block.title } </h3>
-							</div>
-						</div>
-					</li>
+		<li class="pdf-block">
+			<button>
+				<div class="wrapper">
+					<picture> 
+						<img src="${ block.image.original.url }">
+					</picture>
+					<div class="container-title">
+						<h3> ${ block.title} <h3>
+					</div>
+				</div>
+			</button>
+			<dialog class="modal-styling">
+				<p class="modal-title"> ${ block.title} </p>
+
+				<button class="close"> Close </button>
+			</dialog>
+		</li>
 		`
 		channelBlocks.insertAdjacentHTML('beforeend', pdfItem)
 
@@ -164,9 +222,20 @@ let renderBlock = (block) => {
 			// …still up to you, but here’s an `audio` element:
 			let audioItem =
 				`
-				<li class="uploaded-audio">
-					<p><em>Audio</em></p>
-					<audio controls src="${ block.attachment.url }"></video>
+				<li class="audio-block">
+					<button>
+						<div class="wrapper">
+							<audio controls src="${ block.attachment.url }"></video>
+							<div class="container-title">
+								<h3> ${ block.title} <h3>
+							</div>
+						</div>
+					</button>
+					<dialog class="modal-styling">
+						<p class="modal-title"> ${ block.title} </p>
+
+						<button class="close"> Close </button>
+					</dialog>
 				</li>
 				`
 			channelBlocks.insertAdjacentHTML('beforeend', audioItem)
@@ -183,7 +252,8 @@ let renderBlock = (block) => {
 			// …still up to you, but here’s an example `iframe` element:
 			let linkedVideoItem =
 				`
-					<li class="linked-video">
+				<li class="media-block">
+					<button>
 						<div class="wrapper">
 							<picture> 
 								<img src="${ block.image.original.url }">
@@ -192,28 +262,38 @@ let renderBlock = (block) => {
 								<h3> ${ block.title } <h3>
 							</div>
 						</div>
-					</li>
+					</button>
+					<dialog class="modal-styling">
+						<p class="modal-title"> ${ block.title} </p>
+
+						<button class="close"> Close </button>
+					</dialog>
+				</li>
 				`
 			channelBlocks.insertAdjacentHTML('beforeend', linkedVideoItem)
-			// More on iframe: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
 		}
 
 		// LINKED AUDIO
 		else if (embed.includes('rich')) {
 		let linkedAudioItem = 
 			`
-					<li class="linked-audio">
-				
-						<div class="wrapper">
-							<picture> 
-								<img src="${ block.image.original.url }">
-							</picture>
+			<li class="linked-audio">
+				<button>
+					<div class="wrapper">
+					<picture> 
+						<img src="${ block.image.original.url }">
+					</picture>
+					<div class="container-title">
+						<h3> ${ block.title } <h3>
+					</div>
+				</button>
+				</div>
+				<dialog class="modal-styling">
+					<p class="modal-title"> ${ block.title} </p>
 
-							<div class="container-title">
-								<h3> ${ block.title } <h3>
-							</div>
-						</div>
-					<li>
+					<button class="close"> Close </button>
+				</dialog>
+			<li>
 			`
 		channelBlocks.insertAdjacentHTML('beforeend', linkedAudioItem)
 
