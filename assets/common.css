@@ -122,13 +122,15 @@ dialog {
 	transform: translate(5%, 5%);
 	width: 90vw;
 	height: 100vh;
-	background-color: var(--primary-color);
+	background: rgba(255, 255, 255, 0.2);
+	border: 1.5px solid rgba(255, 255, 255, 0.2);
+	backdrop-filter: blur(75px) brightness(300%);
 	overflow: hidden;
 	border-radius: 0.15rem;
 }
 
 .modal-title {
-	color: black;
+	color: white;
 	font-family: var(--primary-font);
 	font-size: 2rem;
 }
@@ -136,6 +138,7 @@ dialog {
 .modal-media {
 	display: flex;
 	flex-direction: column;
+	gap: 2rem;
 
 	img {
 		margin: auto;
@@ -153,8 +156,9 @@ dialog {
 }
 
 .block-description {
-	color: var(--secondary-color);
+	color: var(--primary-color);
 	font-family: var(--secondary-font);
+	letter-spacing: 0.03rem;
 	font-size: 1rem;
 	line-height: 1.2rem;
 	max-width: 45ch;
@@ -162,7 +166,10 @@ dialog {
 
 .close {
 	font-size: 1rem;
+	color: var(--primary-color);
 }
+
+/* MODAL STYLING ENDS HERE */
 
 .block-container:hover {
 	cursor: pointer;
@@ -305,7 +312,7 @@ footer {
 
 dialog::backdrop {
 	background: rgba(0, 0, 0, 0.8);
-	backdrop-filter: blur(15px);
+	backdrop-filter: blur(5px);
 }
 
 
@@ -380,21 +387,58 @@ h3 {
 /* MODAL */
 
 dialog {
-	display: flex;
-	flex-direction: column;
 	align-items: center;
-	justify-content: center;
-	position: fixed;
-
 	max-width: 800px;
 	max-height: 80vh;
+	overflow-y: auto;
 	padding: 20px;
+	display: flex;
+	flex-direction: column;
 	justify-content: space-between;
+	position: fixed;
+	transform: translate(5%, 5%);
+	width: 90vw;
 	height: 100vh;
-	background-color: var(--primary-color);
+	background: rgba(255, 255, 255, 0.2);
+	border: 1.5px solid rgba(255, 255, 255, 0.2);
+	backdrop-filter: blur(75px) brightness(300%);
 	overflow: hidden;
 	border-radius: 0.15rem;
-	z-index: 1000;
+}
+
+.modal-title {
+	color: white;
+	font-family: var(--primary-font);
+	font-size: 2rem;
+}
+
+.modal-media {
+	display: flex;
+	flex-direction: row;
+	gap: 3rem;
+
+	img {
+		margin: auto;
+		max-height: 250px;
+		width: auto;
+		display: block;
+	}
+}
+
+.modal-text {
+	color: var(--secondary-color);
+	font-family: var(--secondary-font);
+	font-size: 1.2rem;
+	line-height: 1.5rem;
+}
+
+.block-description {
+	color: var(--primary-color);
+	font-family: var(--secondary-font);
+	letter-spacing: 0.04rem;
+	font-size: 1.2rem;
+	line-height: 1.5rem;
+	max-width: 45ch;
 }
 
 .block-text-styling {
