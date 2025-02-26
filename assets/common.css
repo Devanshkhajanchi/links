@@ -35,6 +35,7 @@ nav li {
 	justify-content: space-between;
 	color: white;
 	margin-block: 2rem;
+	z-index: 500;
 
 	font-size: 1.2rem;
 	padding-inline: 3rem;
@@ -90,10 +91,10 @@ img {
 	justify-content: space-around;
 }
 
-.parent-container div {
+/* .parent-container div {
 	align-items: center;
 	margin: auto;
-}
+} */
 
 /* MODAL STYLING */
 
@@ -158,6 +159,12 @@ dialog {
 	color: var(--primary-color);
 }
 
+.desc-subtext {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
 /* MODAL STYLING ENDS HERE */
 
 .block-container:hover {
@@ -197,6 +204,7 @@ h1::after {
 h2 {
 	font-size: 2rem;
 	color: var(--primary-color);
+	font-size: 10rem;
 }
 
 /* BLOCK TITLE STYLING */
@@ -266,7 +274,6 @@ p {
 	opacity: 10%;
 	font-size: 2rem;
 	line-height: 2rem;
-	/* max-width: 30ch; */
 	padding-inline: 3rem;
 	margin: auto;
 	padding-block: 5rem;
@@ -526,20 +533,14 @@ dialog {
 	align-items: center;
 	max-width: 1200px;
 	max-height: 80vh;
-	overflow-y: auto;
 	padding-top: 1rem;
-	justify-content: space-between;
-	position: fixed;
 	transform: translate(5%, 5%);
 	width: 90vw;
 	height: 100vh;
-	overflow: hidden;
-	border-radius: 0.15rem;
 }
 
+
 .modal-title {
-	color: white;
-	font-family: var(--primary-font);
 	font-size: 5rem;
 }
 

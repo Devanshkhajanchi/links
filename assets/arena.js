@@ -234,7 +234,8 @@ let renderBlock = (block) => {
 					</button>
 					<dialog class="modal-styling">
 						<p class="modal-title"> ${ block.title} </p>
-						<p class="block-description"> ${block.description} </P>
+						<p class="block-description">${ block.description_html ? block.description_html : '' }</P>
+						
 						<button class="close"> × </button>
 					</dialog>
 				</li>
@@ -269,7 +270,7 @@ let renderBlock = (block) => {
 						<p class="modal-title"> ${ block.title} </p>
 						<div class="modal-media">
 							<div> <img>${ block.embed.html } </img> </div>
-							<p class="block-description"> ${block.description} </P>
+							<p>${ block.description_html ? block.description_html : '' }</p>
 						</div>
 						<button class="close"> × </button>
 					</dialog>
@@ -298,7 +299,7 @@ let renderBlock = (block) => {
 					<p class="modal-title"> ${ block.title} </p>
 					<div class="modal-media">
 						<div> <img>${ block.embed.html } </img> </div>
-						<p class="block-description"> ${block.description} </P>
+						<p>${ block.description_html ? block.description_html : '' }</p>
 						</div>
 					<button class="close"> × </button>
 				</dialog>
